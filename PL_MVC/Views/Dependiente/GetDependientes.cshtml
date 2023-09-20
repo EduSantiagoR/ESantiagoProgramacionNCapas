@@ -1,0 +1,61 @@
+﻿@model ML.Dependiente
+@{
+    ViewBag.Title = "GetDependientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Dependientes</h2>
+<hr />
+<td class="text-center align-middle"><a class="btn btn-success" href="@Url.Action("Form","Dependiente", new { numeroEmpleado = Model.Empleado.NumeroEmpleado})">Agregar dependiente</a></td>
+<td class="text-center align-middle"><a class="btn btn-danger" href="@Url.Action("Dependiente","Dependiente")">Volver</a></td>
+<hr />
+<div>
+    @if (Model.Dependientes != null)
+    {
+        <div class="table-responsive">
+            @if (Model.Dependientes.Count > 0)
+            {
+                <table class="table table-dark table-striped table-hover" id="tablaTodasAseguradoras">
+                    <thead>
+                        <tr>
+                            <th class="text-center align-middle">Editar</th>
+                            <th class="text-center align-middle">Id Dependiente</th>
+                            <th class="text-center align-middle">Número de empleado</th>
+                            <th class="text-center align-middle">Nombre</th>
+                            <th class="text-center align-middle">Fecha de nacimiento</th>
+                            <th class="text-center align-middle">Estado civil</th>
+                            <th class="text-center align-middle">Género</th>
+                            <th class="text-center align-middle">Teléfono</th>
+                            <th class="text-center align-middle">RFC</th>
+                            <th class="text-center align-middle">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (ML.Dependiente dependiente in Model.Dependientes)
+                        {
+                            <tr>
+                                <td class="text-center align-middle"><a class="btn btn-success" href="@Url.Action("Form","Dependiente", new {idDependiente = dependiente.IdDependiente})"><i class="fa-solid fa-file-pen"></i></a></td>
+                                <td class="text-center align-middle">@dependiente.IdDependiente</td>
+                                <td class="text-center align-middle">@dependiente.Empleado.NumeroEmpleado</td>
+                                <td class="text-center align-middle">@dependiente.Nombre @dependiente.ApellidoPaterno @dependiente.ApellidoMaterno</td>
+                                <td class="text-center align-middle">@dependiente.FechaNacimiento.ToShortDateString()</td>
+                                <td class="text-center align-middle">@dependiente.EstadoCivil</td>
+                                <td class="text-center align-middle">@dependiente.Genero</td>
+                                <td class="text-center align-middle">@dependiente.Telefono</td>
+                                <td class="text-center align-middle">@dependiente.Rfc</td>
+                                <td class="text-center align-middle"><a class="btn btn-danger alert-warning" href="@Url.Action("Delete","Dependiente", new {idDependiente = dependiente.IdDependiente})" onclick="return confirm('¿Esttas seguro de querer eliminar este registro?')"><i class="fa-regular fa-trash-can"></i></a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-warning" role="alert">
+                    ¡Vaya! Parece que no tines dependientes registrados. Si lo deseas puedes agregar uno.
+                </div>
+            }
+        </div>
+    }
+</div>
+

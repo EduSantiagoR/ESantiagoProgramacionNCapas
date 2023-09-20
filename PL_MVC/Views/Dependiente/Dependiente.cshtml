@@ -1,0 +1,46 @@
+﻿@model ML.Empleado
+@{
+    ViewBag.Title = "Dependiente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Empleados</h2>
+<hr />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="~/Content/Styles/EmpleadoCard.css" type="text/css" />
+@using (Html.BeginForm("GetDependientes", "Dependiente", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    if (Model.Empleados != null)
+    {
+        <div class="row">
+            @foreach (ML.Empleado empleado in Model.Empleados)
+            {
+                <div class="card">
+                    @if (empleado.Foto == null || empleado.Foto == "")
+                    {
+                        <img src="https://w7.pngwing.com/pngs/615/354/png-transparent-clerk-computer-icons-clerk-thumbnail.png" style="width:100%" />
+
+                    }
+                    else
+                    {
+                        <img src="data:image/*;base64,@empleado.Foto" alt="John" style="width:100%">
+                    }
+                    <h4>@empleado.Nombre @empleado.ApellidoPaterno @empleado.ApellidoMaterno</h4>
+                    <p class="title">@empleado.NumeroEmpleado</p>
+                    <p>Empresa: @empleado.Empresa.Nombre</p>
+                    <p>Ingreso: @empleado.FechaIngreso.ToShortDateString()</p>
+                    @*<a href="#"><i class="fa fa-dribbble"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-facebook"></i></a>*@
+                    <p><button type="submit" value="@empleado.NumeroEmpleado" name="numeroEmpleado">Dependientes</button></p>
+                </div>
+
+            }
+        </div>
+    }
+}
+
+
+
+

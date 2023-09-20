@@ -1,0 +1,3 @@
+Ocurrió un error al insertar el registro de BlueDragon21 el error fue An error occurred while executing the command definition. See the inner exception for details.
+Ocurrió un error al insertar el registro de StarGazer99 el error fue An error occurred while executing the command definition. See the inner exception for details.
+Ocurrió un error al insertar el registro de StarGazer99 el error fue An error occurred while executing the command definition. See the inner exception for details.

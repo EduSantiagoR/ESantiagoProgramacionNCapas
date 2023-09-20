@@ -1,0 +1,85 @@
+﻿@model ML.Empleado
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Registro de empleados</h2>
+<div>
+    <p>A continuación se muestran los resgistos de empleados.</p>
+</div>
+<hr />
+<div>
+    @using (Html.BeginForm("GetAll", "Empleado", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            @Html.LabelFor(model => model.Empresa.IdEmpresa)
+            @Html.DropDownListFor(model => model.Empresa.IdEmpresa, new SelectList(Model.Empresa.Empresas, "IdEmpresa","Nombre"),"Selecciona una empresa", new {@class="form-control"})
+        </div>
+        <div>
+            @Html.LabelFor(model => model.Nombre)
+            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+        </div>
+        <div>
+            <button class="btn btn-warning" type="submit">Buscar</button>
+        </div>
+    }
+</div>
+<hr/>
+<td class="text-center align-middle"><a class="btn btn-success" href="@Url.Action("Form","Empleado")">Agregar empleado</a></td>
+<hr />
+<div>
+    @if (Model.Empleados != null)
+    {
+        <div class="table-responsive">
+            <table class="table table-dark table-striped table-hover" id="tablaTodasAseguradoras">
+                <thead>
+                    <tr>
+                        <th class="text-center align-middle">Editar</th>
+                        <th class="text-center align-middle">Foto</th>
+                        <th class="text-center align-middle">Número de empleado</th>
+                        <th class="text-center align-middle">RFC</th>
+                        <th class="text-center align-middle">Nombre</th>
+                        <th class="text-center align-middle">Email</th>
+                        <th class="text-center align-middle">Teléfono</th>
+                        <th class="text-center align-middle">Fecha de nacimiento</th>
+                        <th class="text-center align-middle">NSS</th>
+                        <th class="text-center align-middle">Fecha de ingreso</th>
+                        <th class="text-center align-middle">Nombre de empresa</th>
+                        <th class="text-center align-middle">Teléfono de empresa</th>
+                        <th class="text-center align-middle">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (ML.Empleado empleado in Model.Empleados)
+                    {
+                        <tr>
+                            <td class="text-center align-middle"><a class="btn btn-success" href="@Url.Action("Form","Empleado", new {numeroEmpleado = empleado.NumeroEmpleado})"><i class="fa-solid fa-file-pen"></i></a></td>
+                            <td class="text-center align-middle">
+                                @if (empleado.Foto == "" || empleado.Foto == null)
+                                {
+                                    <img class="rounded-circle" src="https://w7.pngwing.com/pngs/615/354/png-transparent-clerk-computer-icons-clerk-thumbnail.png" width="50" height="50" />
+                                }
+                                else
+                                {
+                                    <img class="rounded-circle" src="data:image/*;base64,@empleado.Foto" width="50" height="50" />
+                                }
+                            </td>
+                            <td class="text-center align-middle">@empleado.NumeroEmpleado</td>
+                            <td class="text-center align-middle">@empleado.Rfc</td>
+                            <td class="text-center align-middle">@empleado.Nombre @empleado.ApellidoPaterno @empleado.ApellidoMaterno</td>
+                            <td class="text-center align-middle">@empleado.Email</td>
+                            <td class="text-center align-middle">@empleado.Telefono</td>
+                            <td class="text-center align-middle">@empleado.FechaNacimiento.ToShortDateString()</td>
+                            <td class="text-center align-middle">@empleado.Nss</td>
+                            <td class="text-center align-middle">@empleado.FechaIngreso.ToShortDateString()</td>
+                            <td class="text-center align-middle">@empleado.Empresa.Nombre</td>
+                            <td class="text-center align-middle">@empleado.Empresa.Telefono</td>
+                            <td class="text-center align-middle"><a class="btn btn-danger alert-warning" href="@Url.Action("Delete","Empleado", new {numeroEmpleado = empleado.NumeroEmpleado})" onclick="return confirm('¿Esttas seguro de querer eliminar este registro?')"><i class="fa-regular fa-trash-can"></i></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

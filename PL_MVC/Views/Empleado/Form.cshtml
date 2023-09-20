@@ -1,0 +1,111 @@
+﻿@model ML.Empleado
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Formulario de empleado</h2>
+<p>Por favor, ingrese los datos que se solicitan.</p>
+<hr />
+<div class="container">
+    @using (Html.BeginForm("Form", "Empleado", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.Foto)
+        @Html.HiddenFor(model=>model.Accion)
+        <div class="row mb-3">
+            <div class="col col-4">
+                @Html.LabelFor(model => model.NumeroEmpleado)
+                @Html.TextBoxFor(model => model.NumeroEmpleado, new { @class = "form-control" })
+            </div>
+            <div class="col col-4">
+                @Html.LabelFor(model => model.Rfc)
+                @Html.TextBoxFor(model => model.Rfc, new { @class = "form-control" })
+            </div>
+            <div class="col col-4">
+                @Html.LabelFor(model => model.Nombre)
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col col-4">
+                @Html.LabelFor(model => model.ApellidoPaterno)
+                @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control" })
+            </div>
+            <div class="col col-4">
+                @Html.LabelFor(model => model.ApellidoMaterno)
+                @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control" })
+            </div>
+            <div class="col col-4">
+                @Html.LabelFor(model => model.Email)
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col col-4">
+                @Html.LabelFor(model => model.Telefono)
+                @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control" })
+            </div>
+            <div class="col col-4">
+                @Html.LabelFor(model => model.FechaNacimiento)
+                @Html.TextBoxFor(model => model.FechaNacimiento, new { @class = "form-control" })
+            </div>
+            <div class="col col-4">
+                @Html.LabelFor(model => model.Nss)
+                @Html.TextBoxFor(model => model.Nss, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col col-4">
+                @Html.LabelFor(model => model.FechaIngreso)
+                @Html.TextBoxFor(model => model.FechaIngreso, new { @class = "form-control" })
+            </div>
+            <div class="col col-4">
+                @Html.LabelFor(model => model.Empresa.IdEmpresa)
+                @Html.DropDownListFor(model => model.Empresa.IdEmpresa, new SelectList(Model.Empresa.Empresas, "IdEmpresa", "Nombre"), "Selecciona una empresa", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col col-4">
+                @if (Model.Foto == "" || Model.Foto == null)
+                {
+                    <img id="img" src="https://w7.pngwing.com/pngs/615/354/png-transparent-clerk-computer-icons-clerk-thumbnail.png" width="200" height="200" />
+                }
+                else
+                {
+                    <img id="img" src="data:image/*;base64,@Model.Foto" width="200" height="200" />
+                }
+                <input id="Imagen" name="Imagen" type="file" class="form-control" onchange="ValidarImagen(), VisualizarImagen(this)" />
+            </div>
+        </div>
+        <button class="btn btn-success" type="submit" id="btnGuardar"><i class="fa-solid fa-cloud-arrow-up"></i>  Guardar</button>
+        <a class="btn btn-danger" href="@Url.Action("GetAll","Empleado")" id="btnVolver"><i class="fa-regular fa-hand-point-left"></i>  Volver</a>
+    }
+</div>
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+    function ValidarImagen() {
+        var extensionesPermitidas = ['jpeg', 'jpg', 'png'];
+        var extensionArchivo = document.getElementById('Imagen').value.split('.').pop().toLowerCase();
+        var esValido = false;
+        for (var index in extensionesPermitidas) {
+            if (extensionArchivo == extensionesPermitidas[index]) {
+                esValido = true;
+                break;
+            }
+        }
+        if (!esValido) {
+            alert('Las extensiones permitidas son: *.' + extensionesPermitidas.join(',*.'));
+            $("#Imagen").val("");
+        }
+        return esValido;
+    }
+    function VisualizarImagen(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#img").attr("src", e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

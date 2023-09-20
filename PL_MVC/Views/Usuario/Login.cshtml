@@ -1,0 +1,64 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/Styles/Login.css" type="text/css" />
+    <title>Inicio de sesión</title>
+</head>
+<body>
+    <form class="form" autocomplete="off" method="post" action="~/Usuario/ValidarUsuario">
+        <div class="control">
+            <h1>
+                Inicio de sesión
+            </h1>
+        </div>
+        <div class="control block-cube block-input">
+            <input name="username" type="text" placeholder="Nombre de usuario" id="inputUser" />
+            <div class="bg-top">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg-right">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg">
+                <div class="bg-inner"></div>
+            </div>
+        </div>
+        <div class="control block-cube block-input">
+            <input name="password" type="password" placeholder="Contraseña" id="inputPassword" />
+            <div class="bg-top">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg-right">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg">
+                <div class="bg-inner"></div>
+            </div>
+        </div>
+        <button class="btn block-cube block-cube-hover" type="submit" id="btnIngresar">
+            <div class="bg-top">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg-right">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="bg">
+                <div class="bg-inner"></div>
+            </div>
+            <div class="text">
+                Ingresar
+            </div>
+        </button>
+    </form>
+    <p id="errormessage" style="color: red;"></p>
+    @Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+        
+</script>
+</body>
+</html>

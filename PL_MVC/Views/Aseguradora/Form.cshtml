@@ -1,0 +1,38 @@
+﻿@model ML.Aseguradora
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Formulario de aseguradora</h2>
+<p>Por favor, ingrese los datos que se solicitan.</p>
+<hr />
+<div class="container">
+    @using(Html.BeginForm("Form","Aseguradora", FormMethod.Post, new { enctype="multipart/form-data" }))
+     {
+        @Html.HiddenFor(model => model.IdAseguradora)
+                <div class="row mb-3">
+                    <div class="col col-4">
+                        @Html.LabelFor(model => model.Nombre)
+                        @Html.TextBoxFor(model => model.Nombre, new { @class="form-control" })
+                    </div>
+                    <div class="col col-4">
+                        @Html.LabelFor(model => model.FechaCreacion)
+                        @Html.TextBoxFor(model => model.FechaCreacion, new {@class="form-control", @disabled="true"})
+                    </div>
+                    <div class="col col-4">
+                        @Html.LabelFor(model => model.FechaModificacion)
+                        @Html.TextBoxFor(model => model.FechaModificacion, new {@class ="form-control", @disabled="true" })
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col col-4">
+                        @Html.LabelFor(model => model.Usuario.IdUsuario)
+                        @Html.TextBoxFor(model => model.Usuario.IdUsuario, new { @class = "form-control" })
+                    </div>
+                </div>
+                <button class="btn btn-success" type="submit" id="btnGuardar"><i class="fa-solid fa-cloud-arrow-up"></i>  Guardar</button>
+                <a class="btn btn-danger" href="@Url.Action("GetAll","Aseguradora")" id="btnVolver"><i class="fa-regular fa-hand-point-left"></i>  Volver</a>
+     }
+</div>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e7c131771ae44098ab77712a53d123ad" Name="Diagram1">
+        <EntityTypeShape EntityType="ESantiagoProgramacionNCapasModel.Rol" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESantiagoProgramacionNCapasModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ESantiagoProgramacionNCapasModel.Usuario" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="ESantiagoProgramacionNCapasModel.FK__Usuario__IdRol__2B3F6F97" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ESantiagoProgramacionNCapasModel.Colonia" Width="1.5" PointX="9.75" PointY="5.5" />
+        <EntityTypeShape EntityType="ESantiagoProgramacionNCapasModel.Direccion" Width="1.5" PointX="7.625" PointY="3" />
+        <EntityTypeShape EntityType="ESantiagoProgramacionNCapasModel.Estado" Width="1.5" PointX="5.125" PointY="6" />
+        <EntityTypeShape EntityType="ESantiagoProgramacionNCapasModel.Municipio" Width="1.5" PointX="7.625" PointY="5.75" />
+        <EntityTypeShape EntityType="ESantiagoProgramacionNCapasModel.Pai" Width="1.5" PointX="2.875" PointY="6" />
+        <AssociationConnector Association="ESantiagoProgramacionNCapasModel.FK__Colonia__IdMunic__656C112C" />
+        <AssociationConnector Association="ESantiagoProgramacionNCapasModel.FK__Direccion__IdCol__68487DD7" />
+        <AssociationConnector Association="ESantiagoProgramacionNCapasModel.FK__Direccion__IdUsu__693CA210" />
+        <AssociationConnector Association="ESantiagoProgramacionNCapasModel.FK__Estado__IdPais__5FB337D6" />
+        <AssociationConnector Association="ESantiagoProgramacionNCapasModel.FK__Municipio__IdEst__628FA481" />
+        <EntityTypeShape EntityType="ESantiagoProgramacionNCapasModel.Aseguradora" Width="1.5" PointX="5.375" PointY="1.625" />
+        <AssociationConnector Association="ESantiagoProgramacionNCapasModel.FK__Asegurado__IdUsu__02FC7413" />
+        <EntityTypeShape EntityType="ESantiagoProgramacionNCapasModel.Empleado" Width="1.5" PointX="3" PointY="9" />
+        <EntityTypeShape EntityType="ESantiagoProgramacionNCapasModel.Empresa" Width="1.5" PointX="0.75" PointY="9.125" />
+        <AssociationConnector Association="ESantiagoProgramacionNCapasModel.FK__Empleado__IdEmpr__2BFE89A6" />
+        <EntityTypeShape EntityType="ESantiagoProgramacionNCapasModel.Dependiente" Width="1.5" PointX="5.25" PointY="10" />
+        <AssociationConnector Association="ESantiagoProgramacionNCapasModel.FK__Dependien__Numer__4F47C5E3" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

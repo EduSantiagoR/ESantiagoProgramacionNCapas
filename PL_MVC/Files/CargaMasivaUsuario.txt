@@ -1,0 +1,10 @@
+Nombre|ApellidoPaterno|ApellidoMaterno|FechaNacimiento|Email|IdRol|Username|Password|Sexo|Telefono|Celular|Curp|Calle|NumeroInt|NumeroExt|IdColonia|Imagen|null
+Jhon|Smith|null|09-10-1978|jhonyS@hotmail.com|4|JonnyMaster|Halocombat|M|5678905466|5678765433|JSMT100978|Elm|12|14|16|null|null
+Kevin|Rage|null|03-08-1995|KevRag@hotmail.com|4|Kevvin98|kansashome|M|5689009877|5644337689|KEVR080395HVBNMF02|Barber Street|3|15|20|null|null
+Luis|Lopez|Vargas|07-12-1998|Luisitorey@hotmail.com|4|Lusito99|LusitoComunica|M|5677898765|5633456712|LOVL120798HBNMCF03|Humo|15|15|1|null|null
+Valeria|Rodriguez|Luna|12-12-1994|vale@gmail.com|4|ValeriaBacho|BachitoChido|F|5567890087|5567876651|ROLV121298HBNBCG05|Revolucion|15|2|2|null|null
+Avril|Lavigne|null|09-27-1984|Avril@gmail.com|1|AvrilLvn|LoveSux22|F|5567890098|5656789398|LAVA270984HVCBND09|Berbely Hills|20|17|15|null|null
+Sofia|Flores|Jimenez|12-02-1995|SofiR@gmail.com|4|Chofis|Chofia98|F|5567878876|5677898765|FLJS021295HBCNFD83|Alamos|12|23|5|null|null
+Alberto|Martinez|Rodriguez|09-12-1995|Albert95@gmail.com|4|AlbertinRo|Losmejores|M|5567890987|5645665478|ROMA120995HBCNFB04|Jardines|12|15|4|null|null
+Angel|Ramirez|Ramirez|11-11-1990|WeroRamirez@gmail.com|4|WeroRam|SecCamarena|M|5678907765|5644556787|RARA111190HBCNFH05|Obrador|19|20|11|null|null
+Araceli|Wagner|null|12-20-1990|AraceliW@gmail.com|4|Sunflower|KansasCt|F|5590908876|5609093389|WAGA201290HBNKCT02|Roses Street|13|15|18|null|null
