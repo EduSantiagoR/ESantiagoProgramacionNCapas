@@ -61,31 +61,44 @@ namespace PL_MVC.Controllers
         [HttpPost]
         public ActionResult Form(ML.Dependiente dependiente)
         {
-            if(dependiente.IdDependiente == 0)
+            if (ModelState.IsValid)
             {
-                ML.Result result = BL.Dependiente.Add(dependiente);
-                if (result.Correct)
+                if (dependiente.IdDependiente == 0)
                 {
-                    return RedirectToAction("GetDependientes","Dependiente", new {dependiente.Empleado.NumeroEmpleado});
+                    ML.Result result = BL.Dependiente.Add(dependiente);
+                    if (result.Correct)
+                    {
+                        ViewBag.numeroEmpleado = dependiente.Empleado.NumeroEmpleado;
+                        ViewBag.Mensaje = "Agregado de manera éxitosa";
+                        return PartialView("Modal");
+                    }
+                    else
+                    {
+                        ViewBag.numeroEmpleado = dependiente.Empleado.NumeroEmpleado;
+                        ViewBag.Mensaje = "Error al agregar";
+                        return PartialView("Modal");
+                    }
                 }
                 else
                 {
-                    ViewBag.Mensaje = "Error al agregar";
-                    return PartialView("Modal");
+                    ML.Result result = BL.Dependiente.Update(dependiente);
+                    if (result.Correct)
+                    {
+                        ViewBag.numeroEmpleado = dependiente.Empleado.NumeroEmpleado;
+                        ViewBag.Mensaje = "Actualización éxitosa";
+                        return PartialView("Modal");
+                    }
+                    else
+                    {
+                        ViewBag.numeroEmpleado = dependiente.Empleado.NumeroEmpleado;
+                        ViewBag.Mensaje = "Error al agregar";
+                        return PartialView("Modal");
+                    }
                 }
             }
             else
             {
-                ML.Result result = BL.Dependiente.Update(dependiente);
-                if (result.Correct)
-                {
-                    return RedirectToAction("GetDependientes","Dependiente", new {dependiente.Empleado.NumeroEmpleado});
-                }
-                else
-                {
-                    ViewBag.Mensaje = "Error al agregar";
-                    return PartialView("Modal");
-                }
+                return View(dependiente);
             }
         }
     }

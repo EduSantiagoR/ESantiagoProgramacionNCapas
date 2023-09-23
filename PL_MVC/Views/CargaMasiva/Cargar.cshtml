@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-4">
                     <img id="txt" src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2019/08/notepad.jpg" width="300" height="200" />
-                    <input class="form-control" id="subirTxt" type="file" style="display:none" />
+                    <input class="form-control" value="TXT" name="TXT" id="subirTxt" type="file" style="display:none" />
                 </div>
             </div>
         </div>
@@ -49,7 +49,6 @@
                     Hemos analizado tu archivo y no hemos encontrado errores. Los registros están listos para insertarse, sólo da click en 'Insertar'.
                 </div>
             </div>
-
         }
         else
         {
@@ -63,31 +62,38 @@
 <div class="row">
     @if (Model.Objects != null)
     {
-        
-        <div class="alert alert-danger d-flex align-items-center" role="alert">
-            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill" /></svg>
-            <div>Hemos detectado ciertos errores en tu archivo. Por favor, verifica estos errores y vuelve a intentarlo.
+        if (Model.Objects.Count > 0)
+        {
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill" /></svg>
+                <div>
+                    Hemos detectado ciertos errores en tu archivo. Por favor, verifica estos errores y vuelve a intentarlo.
+                </div>
             </div>
-        </div>
-        
-        <table class="table table-bordered table-responsive">
-            <thead>
-                <tr class="text-center">
-                    <td>Numero de registro</td>
-                    <td>Error</td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (ML.ErrorExcel errorExcel in Model.Objects)
-                {
+
+            <table class="table table-bordered table-responsive">
+                <thead>
                     <tr class="text-center">
-                        <td>@errorExcel.IdRegistro</td>
-                        <td>@errorExcel.Mensaje</td>
+                        <td>Numero de registro</td>
+                        <td>Error</td>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (ML.ErrorExcel errorExcel in Model.Objects)
+                    {
+                        <tr class="text-center">
+                            <td>@errorExcel.IdRegistro</td>
+                            <td>@errorExcel.Mensaje</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
     }
+else
+            {
+
+            }
 
 </div>
 </body>
@@ -97,10 +103,14 @@
         $('#subirExcel').toggle('slow', function () {
 
         });
+        $('#subirTxt').hide(500);
+        $('#subirTxt').val(null);
     });
     $('#txt').click(function () {
         $('#subirTxt').toggle('slow', function () {
 
         });
+        $('#subirExcel').hide(500);
+        $('#subirExcel').val(null);
     });
 </script>

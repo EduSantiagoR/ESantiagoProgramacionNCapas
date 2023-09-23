@@ -11,11 +11,15 @@ namespace PL_MVC.Controllers
         // GET: Aseguradora
         public ActionResult GetAll()
         {
-            ML.Result result = BL.Aseguradora.GetAll();
+            //ML.Result result = BL.Aseguradora.GetAll();
             ML.Aseguradora aseguradora = new ML.Aseguradora();
+            //Consumimos el servicio
+            ServiceReferenceAseguradora.ServiceAseguradoraClient service = new ServiceReferenceAseguradora.ServiceAseguradoraClient();
+            var result = service.GetAll();
+
             if (result.Correct)
             {
-                aseguradora.Aseguradoras = result.Objects;
+                aseguradora.Aseguradoras = result.Objects.ToList();
                 return View(aseguradora);
             }
             else
@@ -28,7 +32,11 @@ namespace PL_MVC.Controllers
             ML.Aseguradora aseguradora = new ML.Aseguradora();
             if(IdAseguradora!= null)
             {
-                ML.Result result = BL.Aseguradora.GetById(IdAseguradora.Value);
+                //ML.Result result = BL.Aseguradora.GetById(IdAseguradora.Value);
+
+                ServiceReferenceAseguradora.ServiceAseguradoraClient service = new ServiceReferenceAseguradora.ServiceAseguradoraClient();
+                var result = service.GetById(IdAseguradora.Value);
+
                 if (result.Correct)
                 {
                     aseguradora = (ML.Aseguradora)result.Object; //unboxing
@@ -45,7 +53,11 @@ namespace PL_MVC.Controllers
             ML.Aseguradora aseguradora = new ML.Aseguradora();
             aseguradora.IdAseguradora = IdAseguradora.Value;
 
-            ML.Result result = BL.Aseguradora.Delete(aseguradora);
+            //ML.Result result = BL.Aseguradora.Delete(aseguradora);
+            //WCF
+            ServiceReferenceAseguradora.ServiceAseguradoraClient servicio = new ServiceReferenceAseguradora.ServiceAseguradoraClient();
+            var result = servicio.Delete(aseguradora);
+
             if (result.Correct)
             {
                 ViewBag.Message = "Eliminado correctamente.";
@@ -62,7 +74,10 @@ namespace PL_MVC.Controllers
         {
             if(aseguradora.IdAseguradora == 0)
             {
-                ML.Result result = BL.Aseguradora.Add(aseguradora);
+                //ML.Result result = BL.Aseguradora.Add(aseguradora);
+                ServiceReferenceAseguradora.ServiceAseguradoraClient service = new ServiceReferenceAseguradora.ServiceAseguradoraClient();
+                var result = service.Add(aseguradora);
+
                 if(result.Correct)
                 {
                     ViewBag.Mensaje = "Registro éxtitoso.";
@@ -74,7 +89,11 @@ namespace PL_MVC.Controllers
             }
             else
             {
-                ML.Result result = BL.Aseguradora.Update(aseguradora);
+                //ML.Result result = BL.Aseguradora.Update(aseguradora);
+
+                ServiceReferenceAseguradora.ServiceAseguradoraClient service = new ServiceReferenceAseguradora.ServiceAseguradoraClient();
+                var result = service.Update(aseguradora);
+
                 if (result.Correct)
                 {
                     ViewBag.Mensaje = "Actualización éxitosa.";

@@ -143,14 +143,14 @@ namespace BL
             }
             return result;
         }
-        public static ML.Result Delete(ML.Aseguradora aseguradora)
+        public static ML.Result Delete( int idAseguradora)
         {
             ML.Result result = new ML.Result();
             try
             {
                 using(DLEF.ESantiagoProgramacionNCapasEntities1 context = new ESantiagoProgramacionNCapasEntities1())
                 {
-                    var rowsAffected = context.AseguradoraDelete(aseguradora.IdAseguradora);
+                    var rowsAffected = context.AseguradoraDelete(idAseguradora);
                     if(rowsAffected > 0)
                     {
                         result.Correct = true;

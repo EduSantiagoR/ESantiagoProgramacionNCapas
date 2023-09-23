@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,11 +16,15 @@ namespace PL_MVC.Controllers
             empleado.Empresa = new ML.Empresa();
             empleado.Empresa.IdEmpresa = 0;
             empleado.Nombre = "";
-            ML.Result result = BL.Empleado.GetAll(empleado);
+            //ML.Result result = BL.Empleado.GetAll(empleado);
             ML.Result resultEmpresa = BL.Empresa.GetAll();
+
+            //WCF
+            ServiceReferenceEmpleado.ServiceEmpleadoClient service = new ServiceReferenceEmpleado.ServiceEmpleadoClient();
+            var result = service.GetAll(empleado);
             if (result.Correct)
             {
-                empleado.Empleados = result.Objects;
+                empleado.Empleados = result.Objects.ToList();
                 empleado.Empresa.Empresas = resultEmpresa.Objects; //Pase la lista
                 return View(empleado);
             }
@@ -35,11 +40,15 @@ namespace PL_MVC.Controllers
             {
                 empleado.Nombre = "";
             }
-            ML.Result result = BL.Empleado.GetAll(empleado);
+            //ML.Result result = BL.Empleado.GetAll(empleado);
             ML.Result resultEmpresa = BL.Empresa.GetAll();
+
+            ServiceReferenceEmpleado.ServiceEmpleadoClient service = new ServiceReferenceEmpleado.ServiceEmpleadoClient();
+            var result = service.GetAll(empleado);
+
             if (result.Correct)
             {
-                empleado.Empleados = result.Objects;
+                empleado.Empleados = result.Objects.ToList();
                 empleado.Empresa.Empresas = resultEmpresa.Objects; //Pase la lista de empresas
                 return View(empleado);
             }
@@ -53,7 +62,13 @@ namespace PL_MVC.Controllers
         {
             ML.Empleado empleado = new ML.Empleado();
             empleado.NumeroEmpleado = numeroEmpleado;
-            ML.Result result = BL.Empleado.Delete(empleado.NumeroEmpleado);
+
+            //ML.Result result = BL.Empleado.Delete(empleado.NumeroEmpleado);
+
+            //WCF
+            ServiceReferenceEmpleado.ServiceEmpleadoClient service = new ServiceReferenceEmpleado.ServiceEmpleadoClient();
+            var result = service.Delete(empleado.NumeroEmpleado);
+
             if (result.Correct)
             {
                 ViewBag.Mensaje = "Eliminado de manera éxitosa.";
@@ -74,7 +89,12 @@ namespace PL_MVC.Controllers
 
             if (numeroEmpleado != null) //Update
             {
-                ML.Result result = BL.Empleado.GetById(numeroEmpleado);
+                //ML.Result result = BL.Empleado.GetById(numeroEmpleado);
+
+                //WCF
+                ServiceReferenceEmpleado.ServiceEmpleadoClient service = new ServiceReferenceEmpleado.ServiceEmpleadoClient();
+                var result = service.GetById(numeroEmpleado);
+
                 if (result.Correct)
                 {
                     empleado = (ML.Empleado)result.Object; //unboxing
@@ -99,7 +119,12 @@ namespace PL_MVC.Controllers
             }
             if (empleado.Accion == "Add") //ULTIMO CHEQUEO QUEDO AQUI, HAY QUE DEPURAR PARA AGREGAR
             {
-                ML.Result result = BL.Empleado.Add(empleado);
+                //ML.Result result = BL.Empleado.Add(empleado);
+
+                //WCF
+                ServiceReferenceEmpleado.ServiceEmpleadoClient service = new ServiceReferenceEmpleado.ServiceEmpleadoClient();
+                var result = service.Add(empleado);
+
                 if(result.Correct)
                 {
                     ViewBag.Mensaje = "Registro éxitoso.";
@@ -111,7 +136,12 @@ namespace PL_MVC.Controllers
             }
             else
             {
-                ML.Result result = BL.Empleado.Update(empleado);
+                //ML.Result result = BL.Empleado.Update(empleado);
+
+                //WCF
+                ServiceReferenceEmpleado.ServiceEmpleadoClient service = new ServiceReferenceEmpleado.ServiceEmpleadoClient();
+                var result = service.Update(empleado);
+
                 if (result.Correct)
                 {
                     ViewBag.Mensaje = "Actualización éxitosa.";

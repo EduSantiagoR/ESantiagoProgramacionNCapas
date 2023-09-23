@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="text-center">Dependientes</h2>
+<h2 class="text-center">Dependientes del empleado @Model.Empleado.NumeroEmpleado</h2>
 <hr />
 <td class="text-center align-middle"><a class="btn btn-success" href="@Url.Action("Form","Dependiente", new { numeroEmpleado = Model.Empleado.NumeroEmpleado})">Agregar dependiente</a></td>
 <td class="text-center align-middle"><a class="btn btn-danger" href="@Url.Action("Dependiente","Dependiente")">Volver</a></td>
@@ -52,7 +52,7 @@
             else
             {
                 <div class="alert alert-warning" role="alert">
-                    ¡Vaya! Parece que no tines dependientes registrados. Si lo deseas puedes agregar uno.
+                    ¡Vaya! Parece que no tienes dependientes registrados. Si lo deseas puedes agregar uno.
                 </div>
             }
         </div>

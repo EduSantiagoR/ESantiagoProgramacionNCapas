@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="a3e73c93-6473-408a-b672-18136b4a2176" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:51991/ServiceAseguradora.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceAseguradora.disco" MetadataType="Disco" ID="820c1b9b-34d7-47fc-9c6d-88954efb47f0" SourceId="1" SourceUrl="http://localhost:51991/ServiceAseguradora.svc?disco" />
+    <MetadataFile FileName="ServiceAseguradora.xsd" MetadataType="Schema" ID="c95a22b3-32d4-46fa-afde-9387fe3e1598" SourceId="1" SourceUrl="http://localhost:51991/ServiceAseguradora.svc?xsd=xsd4" />
+    <MetadataFile FileName="ServiceAseguradora1.xsd" MetadataType="Schema" ID="f2e96225-b16a-495f-8ef1-fb20de7b21c0" SourceId="1" SourceUrl="http://localhost:51991/ServiceAseguradora.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceAseguradora2.xsd" MetadataType="Schema" ID="96c2b08c-d413-4ecb-ba8f-3236c582d09a" SourceId="1" SourceUrl="http://localhost:51991/ServiceAseguradora.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceAseguradora.wsdl" MetadataType="Wsdl" ID="e6b65b52-4103-4301-a5c1-b3c3dd4d9d28" SourceId="1" SourceUrl="http://localhost:51991/ServiceAseguradora.svc?wsdl" />
+    <MetadataFile FileName="ServiceAseguradora3.xsd" MetadataType="Schema" ID="0806d45a-4043-4c5b-9fd5-8026ee227a8c" SourceId="1" SourceUrl="http://localhost:51991/ServiceAseguradora.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceAseguradora4.xsd" MetadataType="Schema" ID="047d9c8c-2b57-44cf-a3e3-0e2b64b40e4e" SourceId="1" SourceUrl="http://localhost:51991/ServiceAseguradora.svc?xsd=xsd5" />
+    <MetadataFile FileName="ServiceAseguradora5.xsd" MetadataType="Schema" ID="b96badb6-8dd8-4679-abe3-51f5f55b5cce" SourceId="1" SourceUrl="http://localhost:51991/ServiceAseguradora.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

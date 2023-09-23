@@ -22,6 +22,7 @@ namespace PL_MVC.Controllers
         public ActionResult Cargar(ML.Result result)
         {
             HttpPostedFileBase file = Request.Files["Excel"];
+            HttpPostedFileBase filetxt = Request.Files["TXT"];
             if (Session["pathExcel"] == null) //Validamos que la sesion esté vacía
             {
                 if (file != null)
@@ -53,7 +54,6 @@ namespace PL_MVC.Controllers
                             {
                                 ViewBag.Mensaje = "El excel no contiene registros";
                             }
-
                         }
                     }
                     else
